@@ -27,9 +27,9 @@ vals = {
             "subasm" : [31, 31]
         },
         "min_overlap_range" : {
-            "raw" : [1000, 5000],
-            "corrected" : [1000, 5000],
-            "subasm" : [1000, 1000]
+            "raw" : [100, 5000],
+            "corrected" : [100, 5000],
+            "subasm" : [100, 5000]
         },
         #"reduced_asm_cov"  : 40,
 

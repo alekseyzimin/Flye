@@ -636,7 +636,7 @@ def main():
                         default=1, help="number of polishing iterations [1]",
                         metavar="int")
     parser.add_argument("-m", "--min-overlap", dest="min_overlap", metavar="int",
-                        type=lambda v: check_int_range(v, 1000, 10000),
+                        type=lambda v: check_int_range(v, 100, 10000),
                         default=None, help="minimum overlap between reads [auto]")
     parser.add_argument("--asm-coverage", dest="asm_coverage", metavar="int",
                         default=None, help="reduced coverage for initial "
@@ -658,9 +658,9 @@ def main():
                         help="resume from the last completed stage")
     parser.add_argument("--resume-from", dest="resume_from", metavar="stage_name",
                         default=None, help="resume from a custom stage")
-    #parser.add_argument("--kmer-size", dest="kmer_size",
-    #                    type=lambda v: check_int_range(v, 11, 31, require_odd=True),
-    #                    default=None, help="kmer size (default: auto)")
+    parser.add_argument("--kmer-size", dest="kmer_size",
+                        type=lambda v: check_int_range(v, 11, 31, require_odd=True),
+                        default=None, help="kmer size (default: auto)")
     parser.add_argument("--debug", action="store_true",
                         dest="debug", default=False,
                         help="enable debug output")
@@ -689,7 +689,7 @@ def main():
         args.read_type = "corrected"
     if args.subassemblies:
         args.reads = args.subassemblies
-        args.platform = "pacbio"    #arbitrary
+        args.platform = "nano"    #arbitrary
         args.read_type = "subasm"
 
     if not os.path.isdir(args.out_dir):

@@ -56,10 +56,13 @@ def setup_params(args):
         parameters["min_overlap"] = args.min_overlap
 
     #Selecting k-mer size
-    if args.genome_size < cfg.vals["big_genome_kmer"]:
-        parameters["kmer_size"] = cfg.vals["kmer_size"][args.read_type][0]
+    if args.kmer_size is None:
+        if args.genome_size < cfg.vals["big_genome_kmer"]:
+            parameters["kmer_size"] = cfg.vals["kmer_size"][args.read_type][0]
+        else:
+            parameters["kmer_size"] = cfg.vals["kmer_size"][args.read_type][1]
     else:
-        parameters["kmer_size"] = cfg.vals["kmer_size"][args.read_type][1]
+        parameters["kmer_size"] = args.kmer_size
     logger.info("Selected k-mer size: {0}".format(parameters["kmer_size"]))
 
     #Downsampling reads for the first assembly stage to save memory
