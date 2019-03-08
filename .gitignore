@@ -9,3 +9,13 @@ bin/flye-repeat
 bin/flye-contigger
 bin/flye-minimap2
 build
+Makefile.in
+aclocal.m4
+autom4te.cache
+config.h.in
+configure
+depcomp
+install-sh
+missing
+*_cmdline.hpp
+config.*
