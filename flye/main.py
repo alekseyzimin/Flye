@@ -295,8 +295,11 @@ class JobConsensus(Job):
 
         contigs_info = aln.get_contigs_info(self.in_contigs)
         logger.info("Computing consensus")
+        lthreads=int(self.args.threads/4);
+        if lthreads<=1:
+            lthreads=1
         consensus_fasta = cons.get_consensus(out_alignment, self.in_contigs,
-                                             contigs_info, self.args.threads,
+                                             contigs_info, lthreads,
                                              self.args.platform)
         fp.write_fasta_dict(consensus_fasta, self.out_consensus)
 
